@@ -77,7 +77,16 @@ namespace FlexSerial
 
         private void pause_Click(object sender, RoutedEventArgs e)
         {
-            serialPort.Close();
+            try
+            {
+                serialPort.Close();
+                info.Text = "Port closed successfully";
+            }
+            catch (Exception ex)
+            {
+                info.Text = ex.Message;
+            }
+
             start.IsEnabled = !serialPort.IsOpen;
             pause.IsEnabled = serialPort.IsOpen;
         }
