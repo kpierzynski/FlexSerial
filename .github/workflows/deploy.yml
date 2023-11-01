@@ -26,12 +26,12 @@ jobs:
         
       - name: Create virtual env
         run: |
-          ls -la
           python3 -m venv VENV
-          source VENV/bin/activate
 
       - name: Run Python Script
-        run: pyside6-deploy -c pysidedeploy.spec
+        run: |
+          source VENV/bin/activate
+          pyside6-deploy -c pysidedeploy.spec
 
       - uses: actions/upload-artifact@v3
         with:
