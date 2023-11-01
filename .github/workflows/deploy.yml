@@ -55,7 +55,7 @@ jobs:
         run: pip install pyside6 pyserial
 
       - name: Create empty QML to omit bug
-        run: echo. 2> empty.qml
+        run: New-Item empty.qml -type file
         
       - name: Create virtual env
         run: |
