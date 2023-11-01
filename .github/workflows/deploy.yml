@@ -1,4 +1,4 @@
-name: Python Script Workflow
+name: Python Flex Serial
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - pyFlexSerial
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,10 +16,15 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: "3.10.12"
+          python-version: '3.10.12'
 
       - name: Install Dependencies
         run: pip install pyside6 pyserial
+
+      - name: Create virtual env
+        run: |
+          python3 -m venv VENV
+          source VENV/bin/activate
 
       - name: Create empty QML to omit bug
         run: touch empty.qml
