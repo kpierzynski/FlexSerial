@@ -64,7 +64,7 @@ jobs:
       - name: Run Python Script
         run: |
           VENV\Scripts\activate
-          pyside6-deploy -c pysidedeploy.spec
+          pyside6-deploy -f -c pysidedeploy.spec
 
       - uses: actions/upload-artifact@v3
         with:
