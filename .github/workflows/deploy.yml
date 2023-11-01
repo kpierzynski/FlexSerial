@@ -6,7 +6,7 @@ on:
       - pyFlexSerial
 
 jobs:
-  deploy:
+  deploy-linux:
     runs-on: ubuntu-latest
 
     steps:
@@ -38,3 +38,38 @@ jobs:
           name: pyFlexSerial
           path: ./pyflexserial
           if-no-files-found: error
+          
+  deploy-windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.10.12'
+
+      - name: Install Dependencies
+        run: pip install pyside6 pyserial
+
+      - name: Create empty QML to omit bug
+        run: echo. 2> empty.qml
+        
+      - name: Create virtual env
+        run: |
+          python -m venv VENV
+
+      - name: Run Python Script
+        run: |
+          VENV\Scripts\activate
+          pyside6-deploy -c pysidedeploy.spec
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: pyFlexSerial
+          path: ./pyflexserial
+          if-no-files-found: error
+
+
