@@ -35,7 +35,7 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: pyFlexSerial
+          name: pyFlexSerial-linux
           path: ./pyflexserial
           if-no-files-found: error
           
@@ -68,7 +68,7 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: pyFlexSerial
+          name: pyFlexSerial-windows
           path: ./pyflexserial
           if-no-files-found: error
 
