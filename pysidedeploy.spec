@@ -14,5 +14,5 @@ qml_files = ./empty.qml
 excluded_qml_plugins = QtCharts,QtQuick,QtQuick3D,QtSensors,QtTest,QtWebEngine
 
 [nuitka]
-extra_args = --quiet --noinclude-qt-translations=True
+extra_args = --quiet --assume-yes-for-downloads --noinclude-qt-translations=True
 
